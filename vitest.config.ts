@@ -14,7 +14,8 @@ export default defineConfig({
       '@': path.join(__dirname, './src'),
     },
     coverage: {
-      reporter: ['text', 'text-summary', 'json', 'lcov'],
+      provider: 'v8',
+      reporter: ['text', 'json', 'lcov', 'text-summary'],
     },
   },
 });
