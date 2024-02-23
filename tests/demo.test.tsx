@@ -42,7 +42,7 @@ dirs.forEach((dir) => {
           vi.runAllTimers();
         });
 
-        expect(wrapper.container).toMatchSnapshot('--update');
+        expect(wrapper.container).toMatchSnapshot();
         wrapper.unmount();
       });
     });
