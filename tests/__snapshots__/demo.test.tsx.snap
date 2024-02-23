@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<ActionIcon /> > renders src\\ActionIcon\\demos\\basic.tsx correctly 1`] = `
+exports[`<ActionIcon /> > renders src\\ActionIcon\\demos\\basic.tsx correctly > --update 1`] = `
 .emotion-0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -59,7 +59,7 @@ exports[`<ActionIcon /> > renders src\\ActionIcon\\demos\\basic.tsx correctly 1`
 </div>
 `;
 
-exports[`<ActionIcon /> > renders src\\ActionIcon\\demos\\preset.tsx correctly 1`] = `
+exports[`<ActionIcon /> > renders src\\ActionIcon\\demos\\preset.tsx correctly > --update 1`] = `
 .emotion-0 {
   display: -webkit-box;
   display: -webkit-flex;
