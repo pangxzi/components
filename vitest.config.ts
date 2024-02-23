@@ -1,5 +1,5 @@
+import path from 'path';
 import { defineConfig } from 'vitest/config';
-import { name } from './package.json';
 
 export default defineConfig({
   esbuild: {
@@ -10,8 +10,8 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     alias: {
-      '@': './src',
-      [name]: './src',
+      '@datoou/components': path.join(__dirname, './src'),
+      '@': path.join(__dirname, './src'),
     },
     coverage: {
       reporter: ['text', 'text-summary', 'json', 'lcov'],

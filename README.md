@@ -4,7 +4,7 @@
 
 [//]: # '<img width="160" src="https://avatars.githubusercontent.com/u/17870709?v=4">'
 
-<h1>@arvinxu/npm-template</h1>
+<h1>@datoou/components</h1>
 
 一个开发 npm 项目的模板
 
@@ -25,7 +25,7 @@
 <!-- gitpod url -->
 
 [gitpod-badge]: https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod
-[gitpod-url]: https://gitpod.io/#https://github.com/ant-design/@arvinxu/npm-template
+[gitpod-url]: https://gitpod.io/#https://github.com/ant-design/@datoou/components
 
 <!-- umi url -->
 
@@ -34,10 +34,10 @@
 
 <!-- npm url -->
 
-[npm-image]: http://img.shields.io/npm/v/@arvinxu/npm-template.svg?style=flat-square&color=deepgreen&label=latest
-[npm-url]: http://npmjs.org/package/@arvinxu/npm-template
-[npm-size]: https://img.shields.io/bundlephobia/minzip/@arvinxu/npm-template?color=deepgreen&label=gizpped%20size&style=flat-square
-[npm-size-url]: https://packagephobia.com/result?p=@arvinxu/npm-template
+[npm-image]: http://img.shields.io/npm/v/@datoou/components.svg?style=flat-square&color=deepgreen&label=latest
+[npm-url]: http://npmjs.org/package/@datoou/components
+[npm-size]: https://img.shields.io/bundlephobia/minzip/@datoou/components?color=deepgreen&label=gizpped%20size&style=flat-square
+[npm-size-url]: https://packagephobia.com/result?p=@datoou/components
 
 <!-- coverage -->
 
@@ -50,8 +50,8 @@
 [release-ci]: https://github.com/arvinxx/npm-template/workflows/Release%20CI/badge.svg
 [test-ci-url]: https://github.com/arvinxx/npm-template/actions?query=workflow%3ATest%20CI
 [release-ci-url]: https://github.com/arvinxx/npm-template/actions?query=workflow%3ARelease%20CI
-[download-image]: https://img.shields.io/npm/dm/@arvinxu/npm-template.svg?style=flat-square
-[download-url]: https://npmjs.org/package/@arvinxu/npm-template
+[download-image]: https://img.shields.io/npm/dm/@datoou/components.svg?style=flat-square
+[download-url]: https://npmjs.org/package/@datoou/components
 
 </div>
 
@@ -71,7 +71,7 @@
 推荐使用 `pnpm` 安装
 
 ```bash
-pnpm i @arvinxu/npm-template -S
+pnpm i @datoou/components -S
 ```
 
 ### 使用
