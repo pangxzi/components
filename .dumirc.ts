@@ -1,10 +1,13 @@
 import { defineConfig } from 'dumi';
+//@ts-ignore
 import { homepage } from './package.json';
 
 export default defineConfig({
   themeConfig: {
     name: '@datoou/components',
-    github: homepage,
+    socialLinks: {
+      github: homepage,
+    },
     hero: {
       title: 'ProEditor',
       description: '🌟 通用编辑器 UI 框架',

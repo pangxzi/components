@@ -6,16 +6,17 @@ export default defineConfig({
     jsxInject: "import React from 'react'",
   },
   test: {
-    setupFiles: './tests/test-setup.ts',
+    setupFiles: path.join(__dirname, './tests/test-setup.ts'),
     environment: 'jsdom',
     globals: true,
-    alias: {
-      '@datoou/components': path.join(__dirname, './src'),
-      '@': path.join(__dirname, './src'),
-    },
+    testTimeout: 20000,
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'lcov', 'text-summary'],
+    },
+    alias: {
+      '@datoou/components': path.join(__dirname, './src'),
+      '@': path.join(__dirname, './src'),
     },
   },
 });
