@@ -36,7 +36,7 @@ dirs.forEach((dir) => {
         const Demo = await import(file);
 
         if (!demoName) return;
-        // console.log(`测试组件${dir} DEMO:${demoName}`);
+        console.log(`测试组件${dir} DEMO:${demoName}`);
         const wrapper = render(<Demo.default />, { wrapper: AppContainer });
         act(() => {
           vi.runAllTimers();
