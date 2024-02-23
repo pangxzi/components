@@ -12,7 +12,7 @@ jobs:
 
       - uses: actions-cool/contributor-helper@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.MY_CUSTOM_GITHUB_TOKEN }}
           style: 'simple'
           update-files: 'README.md'
           update-places: '<!-- CONTRIBUTION GROUP -->/<!-- CONTRIBUTION END -->'
