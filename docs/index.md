@@ -1,12 +1,8 @@
 ---
+title: 首页
 hero:
-  title: @datoou/components
-  description: a npm develop template
-  actions:
-    - text: 快速上手
-      link: /guide
-    - text: Github
-      link: /usage
+  title: Datoou <b>components</b>
+  description: a components
 ---
 
-<embed src="../README.md"></embed>
+<code src="./index.tsx" inline></code>
