@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;1.2.0](https://github.com/datoou/components/compare/v1.1.0...v1.2.0)
+
+<sup>Released on **2024-02-28**</sup>
+
+#### ✨ 新特性
+
+- 新增 Icon 组件.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- 新增 Icon 组件 ([3f9a8c5](https://github.com/datoou/components/commit/3f9a8c5))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;1.1.0](https://github.com/datoou/components/compare/v1.0.0...v1.1.0)
 
 <sup>Released on **2024-02-28**</sup>
