@@ -21,3 +21,9 @@
 ```bash
 pnpm i @datoou/components -S
 ```
+
+## 🤝 Contributing
+
+<!-- CONTRIBUTION GROUP -->
+
+<!-- CONTRIBUTION END -->
