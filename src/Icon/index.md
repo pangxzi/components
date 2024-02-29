@@ -1,6 +1,6 @@
 ---
 title: Icon 图标
-description: The `Icon` component is a reusable React component that renders an SVG icon from the `lucide-react` library.
+description: Icon 组件是一个可重复使用的 React 组件，它从 lucide-react 库中呈现一个 SVG 图标。
 group: 基础组件
 nav:
   title: 基础组件

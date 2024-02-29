@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - uses: actions-cool/contributor-helper@v1.2.1
+      - uses: actions-cool/contributor-helper@v1
         with:
           token: ${{ secrets.MY_CUSTOM_GITHUB_TOKEN }}
           style: 'simple'

@@ -1,10 +1,10 @@
 ---
 title: ActionIcon 动作图标
+description: ActionIcon是对 antd Button 的封装，让图标具备按钮动作的响应式效果。
 group: 基础组件
-atomId: ActionIcon
 nav:
   title: 基础组件
-  order: 1
+  order: 2
 ---
 
 ## Default
