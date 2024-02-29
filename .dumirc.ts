@@ -4,7 +4,7 @@ import { resolve } from 'path';
 import { description, homepage, name } from './package.json';
 
 export default defineConfig({
-  title: 'Datoou components',
+  title: 'Datoou Components',
   themeConfig: {
     logo: '😺',
     actions: [
@@ -39,16 +39,17 @@ export default defineConfig({
     },
     giscus: {
       category: 'Q&A',
-      categoryId: 'DIC_kwDOJloKoM4CXsCu',
-      repo: 'lobehub/lobe-ui',
-      repoId: 'R_kgDOJloKoA',
+      categoryId: 'DIC_kwDOLW0tN84Cdm3i',
+      repo: 'datoou/components',
+      repoId: 'R_kgDOLW0tNw',
     },
     name: 'components',
     socialLinks: {
       github: homepage,
     },
-    title: 'Datoou components',
   },
+  logo: '😺',
+  favicons: ['/favicon.svg'],
   apiParser: {},
   resolve: {
     entryFile: './src/index.ts',
