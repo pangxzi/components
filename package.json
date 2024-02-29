@@ -66,6 +66,7 @@
     "antd-style": "^3.6.1",
     "dumi-theme-lobehub": "^1.7.6",
     "glob": "^10.3.10",
+    "leva": "^0.9.35",
     "lucide-react": "^0.341.0",
     "polished": "^4.3.1"
   },

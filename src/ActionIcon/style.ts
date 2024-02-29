@@ -1,37 +1,47 @@
-import { createStyles } from '../theme';
+import { createStyles } from '@/theme';
 
-export const useStyles = createStyles(({ token, css, cx, prefixCls }, { size, className }) => {
-  const prefix = `${prefixCls}-${token.editorPrefix}-icon`;
-  const sizeBoundary =
-    typeof size === 'number'
-      ? css`
-          width: ${size}px !important;
-          height: ${size}px !important;
-        `
-      : '';
+export const useStyles = createStyles(
+  ({ css, token, stylish, cx }, { active, glass }: { active: boolean; glass: boolean }) => {
+    return {
+      block: cx(
+        glass && stylish.blur,
+        css`
+          position: relative;
 
-  const button = css`
-    display: flex;
-    align-items: center;
-    justify-content: center;
+          flex: none;
 
-    &:hover {
-      color: ${token.colorText} !important;
-    }
+          color: ${active ? token.colorText : token.colorTextTertiary};
 
-    &:active {
-      scale: 0.8;
-      color: ${token.colorText};
-    }
+          background: ${active ? token.colorFillTertiary : 'transparent'};
 
-    transition: color 600ms ${token.motionEaseOut}, scale 400ms ${token.motionEaseOut},
-      background-color 100ms ${token.motionEaseOut};
-  `;
+          transition: color 600ms ${token.motionEaseOut}, scale 400ms ${token.motionEaseOut},
+            background-color 100ms ${token.motionEaseOut};
+        `,
+      ),
+      disabled: css`
+        cursor: not-allowed;
+        opacity: 0.5;
+      `,
+      icon: css`
+        transition: scale 400ms ${token.motionEaseOut};
 
-  return {
-    container: cx(prefix, button, sizeBoundary, className),
-    tooltip: css`
-      pointer-events: none;
-    `,
-  };
-});
+        &:active {
+          scale: 0.8;
+        }
+      `,
+      normal: css`
+        cursor: pointer;
+
+        &:hover {
+          color: ${token.colorText};
+          background-color: ${token.colorFillSecondary};
+        }
+
+        &:active {
+          color: ${token.colorText};
+          background-color: ${token.colorFill};
+        }
+      `,
+    };
+  },
+);

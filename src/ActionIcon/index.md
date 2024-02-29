@@ -1,21 +1,21 @@
 ---
 title: ActionIcon 动作图标
-description: ActionIcon是对 antd Button 的封装，让图标具备按钮动作的响应式效果。
+description: ActionIcon组件 让图标具备按钮动作的响应式效果。
 group: 基础组件
 nav:
-  title: 基础组件
-  order: 2
+  title: 组件
+  order: 3
 ---
 
 ## Default
 
 Search icons in [`Lucide Icon`](https://lucide.dev/)
 
-<code src="./demos/basic.tsx" nopadding></code>
+<code src="./demos/index.tsx" nopadding></code>
 
 ## CustomSize
 
-<code src="./demos/preset.tsx" nopadding></code>
+<code src="./demos/CustomSize.tsx" nopadding></code>
 
 ## APIs
 

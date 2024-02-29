@@ -1,4 +1,4 @@
-import { createStyles, keyframes } from 'antd-style';
+import { createStyles, keyframes } from '@/theme';
 
 export const useStyles = createStyles(({ css }) => {
   const spin = keyframes`

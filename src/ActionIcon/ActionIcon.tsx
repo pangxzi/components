@@ -1,112 +1,154 @@
-import type { ButtonProps, TooltipProps } from 'antd';
-import { Button, Tooltip } from 'antd';
-import type { CSSProperties, FC } from 'react';
-import { ConfigProvider } from '../ConfigProvider';
+import { Flex, Tooltip, type FlexProps, type TooltipProps } from 'antd';
+import { Loader2 } from 'lucide-react';
+import { forwardRef, useMemo } from 'react';
+
+import Icon, {
+  LucideIconProps,
+  type IconProps,
+  type IconSizeConfig,
+  type IconSizeType,
+} from '@/Icon';
+import Spotlight from '@/Spotlight';
+
+import { calcSize } from './calcSize';
 import { useStyles } from './style';
 
-/**
- * @title 动作图标属性
- * @description 继承自 `Button` 组件所有属性，除了 `title` 和 `size`
- */
-export interface ActionIconProps extends Omit<ButtonProps, 'title' | 'size'> {
+interface ActionIconSizeConfig extends IconSizeConfig {
+  blockSize?: number | string;
+  borderRadius?: number | string;
+}
+
+type ActionIconSizeType = 'site' | IconSizeType;
+
+export type ActionIconSize = ActionIconSizeType | ActionIconSizeConfig;
+
+export interface ActionIconProps extends LucideIconProps, FlexProps {
   /**
-   * @title 鼠标类型
+   * @description Whether the icon is active or not
+   * @default false
    */
-  cursor?: CSSProperties['cursor'];
+  active?: boolean;
   /**
-   * @title 动作提示
-   */
-  title?: TooltipProps['title'];
-  /**
-   * @title 提示位置
-   */
-  placement?: TooltipProps['placement'];
-  /**
-   * @title 图标
-   */
-  icon: ButtonProps['icon'];
-  /**
-   * @title 点击回调
-   */
-  onClick?: ButtonProps['onClick'];
-  /**
-   * @title 图标尺寸
-   */
-  size?: 'default' | 'large' | number;
-  /**
-   * @description 鼠标移入时候的延迟tooltip时间，默认 0.5
-   * @default 0.5
-   */
-  tooltipDelay?: number;
-  /**
-   * @description 是否展示小箭头，默认不展示
+   * @description Change arrow's visible state and change whether the arrow is pointed at the center of target.
    * @default false
    */
   arrow?: boolean;
+  disable?: boolean;
+  /**
+   * @description Glass blur style
+   * @default 'false'
+   */
+  glass?: boolean;
+  icon?: IconProps['icon'];
+  /**
+   * @description Set the loading status of ActionIcon
+   */
+  loading?: boolean;
+
+  /**
+   * @description The position of the tooltip relative to the target
+   * @enum ["top","left","right","bottom","topLeft","topRight","bottomLeft","bottomRight","leftTop","leftBottom","rightTop","rightBottom"]
+   * @default "top"
+   */
+  placement?: TooltipProps['placement'];
+  /**
+   * @description Size of the icon
+   * @default 'normal'
+   */
+  size?: ActionIconSize;
+  spin?: boolean;
+  /**
+   * @description Whether add spotlight background
+   * @default false
+   */
+  spotlight?: boolean;
+  /**
+   * @description The text shown in the tooltip
+   */
+  title?: string;
+  /**
+   * @description Mouse enter delay of tooltip
+   * @default 0.5
+   */
+  tooltipDelay?: number;
 }
 
-const BaseActionIcon: FC<ActionIconProps> = ({
-  placement,
-  title,
-  icon,
-  cursor,
-  onClick,
-  className,
-  arrow = false,
-  size = 'default',
-  tooltipDelay = 0.5,
-  ...restProps
-}) => {
-  const { styles, cx } = useStyles({ size });
+const ActionIcon = forwardRef<HTMLDivElement, ActionIconProps>(
+  (
+    {
+      color,
+      fill,
+      className,
+      active,
+      icon,
+      size = 'normal',
+      style,
+      glass,
+      title,
+      placement,
+      arrow = false,
+      spotlight,
+      onClick,
+      children,
+      loading,
+      tooltipDelay = 0.5,
+      fillOpacity,
+      fillRule,
+      focusable,
+      disable,
+      spin: iconSpinning,
+      ...rest
+    },
+    ref,
+  ) => {
+    const { styles, cx } = useStyles({ active: Boolean(active), glass: Boolean(glass) });
+    const { blockSize, borderRadius } = useMemo(() => calcSize(size), [size]);
 
-  const Icon = (
-    <Button
-      icon={icon}
-      className={cx(styles.container, className)}
-      type={'text'}
-      style={{ cursor }}
-      size={typeof size === 'number' || size === 'default' ? 'middle' : size}
-      {...restProps}
-      onClick={onClick}
-    />
-  );
+    const iconProps = {
+      color,
+      fill,
+      fillOpacity,
+      fillRule,
+      focusable,
+      size: size === 'site' ? 'normal' : size,
+    };
 
-  return (
-    <>
-      {!title ? (
-        Icon
-      ) : (
-        <Tooltip
-          arrow={arrow}
-          overlayClassName={styles.tooltip}
-          title={title}
-          mouseEnterDelay={tooltipDelay}
-          placement={placement}
-        >
-          {Icon}
-        </Tooltip>
-      )}
-    </>
-  );
-};
+    const content = icon && (
+      <Icon className={styles.icon} icon={icon} {...iconProps} spin={iconSpinning} />
+    );
 
-const ActionIcon = (props: ActionIconProps) => {
-  const { size } = props || {};
-  const { theme: token } = useStyles({ size });
+    const spin = <Icon icon={Loader2} {...iconProps} spin />;
 
-  return (
-    <ConfigProvider
-      componentToken={{
-        Button: {
-          colorText: token.colorTextTertiary,
-          // TODO： Token 的提供不太合理，需要改造
-          colorBgTextHover: token.colorFillSecondary,
-          colorBgTextActive: token.colorFill,
-        },
-      }}
-    >
-      <BaseActionIcon {...props} />
-    </ConfigProvider>
-  );
-};
+    const actionIconBlock = (
+      <Flex
+        align={'center'}
+        className={cx(styles.block, disable ? styles.disabled : styles.normal, className)}
+        justify={'center'}
+        onClick={loading || disable ? undefined : onClick}
+        ref={ref}
+        style={{ borderRadius, height: blockSize, width: blockSize, ...style }}
+        {...rest}
+      >
+        {spotlight && <Spotlight />}
+        {loading ? spin : content}
+        {children}
+      </Flex>
+    );
+
+    if (!title) return actionIconBlock;
+
+    return (
+      <Tooltip
+        arrow={arrow}
+        mouseEnterDelay={tooltipDelay}
+        overlayStyle={{ pointerEvents: 'none' }}
+        placement={placement}
+        title={title}
+      >
+        {actionIconBlock}
+      </Tooltip>
+    );
+  },
+);
+
 export default ActionIcon;

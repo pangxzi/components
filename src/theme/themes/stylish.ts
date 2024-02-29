@@ -13,6 +13,8 @@ export interface StudioStylish {
   controlContainer: string;
   controlContainerFocused: string;
   backgroundBlur: string;
+
+  blur: string;
 }
 
 /**
@@ -99,6 +101,9 @@ export const getStudioStylish: GetCustomStylish<StudioStylish> = ({ token, css }
     backgroundBlur: css`
       background: ${transparentize(0.4)(token.colorBgElevated)};
       backdrop-filter: blur(10px);
+    `,
+    blur: css`
+      backdrop-filter: saturate(180%) blur(10px);
     `,
   };
 };
