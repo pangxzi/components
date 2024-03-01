@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;1.4.0](https://github.com/datoou/components/compare/v1.3.0...v1.4.0)
+
+<sup>Released on **2024-03-01**</sup>
+
+#### ✨ 新特性
+
+- 新增 FluentEmoji 组件.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- 新增 FluentEmoji 组件 ([3c8e646](https://github.com/datoou/components/commit/3c8e646))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;1.3.0](https://github.com/datoou/components/compare/v1.2.0...v1.3.0)
 
 <sup>Released on **2024-02-29**</sup>
