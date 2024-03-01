@@ -26,4 +26,10 @@ pnpm i @datoou/components -S
 
 <!-- CONTRIBUTION GROUP -->
 
+> 📊 Total: <kbd>**1**</kbd>
+
+<a href="https://github.com/datoou" title="datoou">
+  <img src="https://avatars.githubusercontent.com/u/52907799?v=4" width="50" />
+</a>
+
 <!-- CONTRIBUTION END -->
