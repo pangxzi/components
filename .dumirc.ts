@@ -3,6 +3,8 @@ import { resolve } from 'path';
 //@ts-ignore
 import { description, homepage, name } from './package.json';
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 export default defineConfig({
   title: 'Datoou Components',
   themeConfig: {
@@ -50,10 +52,12 @@ export default defineConfig({
   },
   logo: '😺',
   favicons: ['/favicon.svg'],
-  apiParser: {},
-  resolve: {
-    entryFile: './src/index.ts',
-  },
+  apiParser: isProduction ? {} : false,
+  resolve: isProduction
+    ? {
+        entryFile: './src/index.ts',
+      }
+    : undefined,
   html2sketch: {},
   extraBabelPlugins: ['antd-style'],
   styles: [

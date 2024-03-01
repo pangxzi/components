@@ -4,22 +4,19 @@ import { Palette, Smartphone, Zap } from 'lucide-react';
 
 const items: FeaturesProps['items'] = [
   {
-    description:
-      'Based on antd v5, custom algorithms for light and dark themes are provided by default, offering aesthetically pleasing and user-friendly options.',
+    description: '基于 antd v5，默认提供浅色和深色主题的自定义算法，提供美观且用户友好的选项。',
     icon: Palette,
-    title: 'Themeable',
+    title: '主题化',
   },
   {
-    description:
-      'This theme package adopts modern design techniques, making the documents more intuitive, readable, and user-friendly.',
+    description: '该主题包采用现代设计技术，使文档更直观、易读和用户友好。',
     icon: Zap,
-    title: 'Modern',
+    title: '现代',
   },
   {
-    description:
-      'Well-adapted for mobile devices. With the flexible style solution based on CSSinJS, multiple layout options are easily implemented.',
+    description: '专为移动设备设计。基于 CSSinJS 的灵活样式解决方案，轻松实现多种布局选项。',
     icon: Smartphone,
-    title: 'Mobile-Adapted',
+    title: '移动适配',
   },
 ];
 

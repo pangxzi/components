@@ -1,56 +1,30 @@
-import { ConfigProvider as AntdConfigProvider } from 'antd';
-import { AntdToken, ThemeAppearance, useAntdToken, useThemeMode } from 'antd-style';
-import type { OverrideToken } from 'antd/es/theme/interface';
-import type { FC, ReactNode } from 'react';
+import { ElementType, ReactNode, createContext, memo, useContext } from 'react';
 
-import { createStudioAntdTheme, ThemeProvider } from '../theme';
+import { CDN, CdnApi, genCdnUrl } from '@/utils/genCdnUrl';
 
-export const useStudioAntdTheme = (appearance: ThemeAppearance) => {
-  const token = useAntdToken();
-  const themeConfig = createStudioAntdTheme(appearance);
-
-  const controlToken: Partial<AntdToken> = {
-    colorBgContainer: token?.colorFillQuaternary,
-    colorBorder: 'transparent',
-    controlOutline: 'transparent',
-  };
-
-  themeConfig.components = {
-    Input: controlToken,
-    InputNumber: controlToken,
-    Select: controlToken,
-    Tree: {
-      colorBgContainer: 'transparent',
-    },
-    TreeSelect: controlToken,
-  };
-
-  return themeConfig;
-};
-
-export interface ConfigProviderProps {
-  componentToken?: OverrideToken;
-  children: ReactNode;
+type CdnFn = ({ pkg, version, path }: CdnApi) => string;
+export interface Config {
+  customCdnFn?: CdnFn;
+  imgAs?: ElementType;
+  proxy?: CDN | 'custom';
 }
 
-export const ConfigProvider: FC<ConfigProviderProps> = ({ children, componentToken }) => {
-  const { appearance } = useThemeMode();
+export const ConfigContext = createContext<Config | null>(null);
 
-  const studioTheme = useStudioAntdTheme(appearance);
+const ConfigProvider = memo<{ children: ReactNode; config: Config }>(({ children, config }) => {
+  return <ConfigContext.Provider value={config}>{children}</ConfigContext.Provider>;
+});
 
-  studioTheme.components = { ...studioTheme.components, ...componentToken };
+const fallback: CdnFn = ({ pkg, version, path }) =>
+  genCdnUrl({ path, pkg, proxy: 'aliyun', version });
+export const useCdnFn = (): CdnFn => {
+  const config = useContext(ConfigContext);
 
-  return (
-    <AntdConfigProvider theme={studioTheme}>
-      <ThemeProvider appearance={appearance}>{children}</ThemeProvider>
-    </AntdConfigProvider>
-  );
+  if (!config) return fallback;
+  if (config?.proxy !== 'custom')
+    return ({ pkg, version, path }) =>
+      genCdnUrl({ path, pkg, proxy: config.proxy as any, version });
+  return config?.customCdnFn || fallback;
 };
 
-export const withProvider = (Component) => (props) => {
-  return (
-    <ConfigProvider>
-      <Component {...props} />
-    </ConfigProvider>
-  );
-};
+export default ConfigProvider;
