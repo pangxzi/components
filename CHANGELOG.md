@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;1.6.0](https://github.com/datoou/components/compare/v1.5.0...v1.6.0)
+
+<sup>Released on **2024-03-01**</sup>
+
+#### ✨ 新特性
+
+- 新增 StoryBook 组件.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- 新增 StoryBook 组件 ([7fe3162](https://github.com/datoou/components/commit/7fe3162))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;1.5.0](https://github.com/datoou/components/compare/v1.4.0...v1.5.0)
 
 <sup>Released on **2024-03-01**</sup>
