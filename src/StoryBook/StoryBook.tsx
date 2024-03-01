@@ -5,7 +5,7 @@ import { memo } from 'react';
 
 import { DivProps } from '@/types';
 
-import { DraggablePanel } from '@lobehub/ui';
+import { DraggablePanel } from '@datoou/components';
 import { useStyles } from './style';
 
 export interface StoryBookProps extends DivProps {
@@ -30,6 +30,7 @@ export const StoryBook = memo<StoryBookProps>(
         align={'stretch'}
         className={cx(styles.editor, className)}
         // horizontal={!mobile}
+        vertical={mobile}
         justify={'stretch'}
         {...rest}
       >
