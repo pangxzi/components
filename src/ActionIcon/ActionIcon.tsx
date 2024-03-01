@@ -22,7 +22,7 @@ type ActionIconSizeType = 'site' | IconSizeType;
 
 export type ActionIconSize = ActionIconSizeType | ActionIconSizeConfig;
 
-export interface ActionIconProps extends LucideIconProps, FlexProps {
+export interface ActionIconProps extends LucideIconProps, Omit<FlexProps, 'children'> {
   /**
    * @description Whether the icon is active or not
    * @default false
@@ -71,6 +71,7 @@ export interface ActionIconProps extends LucideIconProps, FlexProps {
    * @default 0.5
    */
   tooltipDelay?: number;
+  children?: React.ReactNode;
 }
 
 const ActionIcon = forwardRef<HTMLDivElement, ActionIconProps>(
