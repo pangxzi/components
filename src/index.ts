@@ -4,6 +4,12 @@ export { default as CopyButton, type CopyButtonProps } from './CopyButton';
 export { default as DraggablePanel, type DraggablePanelProps } from './DraggablePanel';
 export { default as Features, type FeaturesProps } from './Features';
 export { default as FluentEmoji, type FluentEmojiProps } from './FluentEmoji';
+export {
+  default as Highlighter,
+  SyntaxHighlighter,
+  type HighlighterProps,
+  type SyntaxHighlighterProps,
+} from './Highlighter';
 export { default as Icon, type IconProps, type IconSize } from './Icon';
 export { default as Snippet, type SnippetProps } from './Snippet';
 export { default as Spotlight, type SpotlightProps } from './Spotlight';
