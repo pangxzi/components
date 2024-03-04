@@ -15,7 +15,7 @@ import { revesePlacement } from './utils';
 const DEFAULT_HEIGHT = 180;
 const DEFAULT_WIDTH = 280;
 
-const Center = ({ children, ...rest }: FlexProps) => (
+export const Center = ({ children, ...rest }: FlexProps) => (
   <Flex justify="center" align="center" {...rest}>
     {children}
   </Flex>

@@ -2,6 +2,7 @@ export { default as ActionIcon, type ActionIconProps, type ActionIconSize } from
 export * from './ConfigProvider';
 export { default as CopyButton, type CopyButtonProps } from './CopyButton';
 export { default as DraggablePanel, type DraggablePanelProps } from './DraggablePanel';
+export { default as Features, type FeaturesProps } from './Features';
 export { default as FluentEmoji, type FluentEmojiProps } from './FluentEmoji';
 export { default as Icon, type IconProps, type IconSize } from './Icon';
 export { default as Spotlight, type SpotlightProps } from './Spotlight';
