@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;1.8.0](https://github.com/datoou/components/compare/v1.7.0...v1.8.0)
+
+<sup>Released on **2024-03-04**</sup>
+
+#### ✨ 新特性
+
+- 新增 CopyButton 组件.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- 新增 CopyButton 组件 ([519f8b7](https://github.com/datoou/components/commit/519f8b7))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;1.7.0](https://github.com/datoou/components/compare/v1.6.0...v1.7.0)
 
 <sup>Released on **2024-03-01**</sup>
