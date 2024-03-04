@@ -2,6 +2,7 @@ import { Flex } from 'antd';
 import { memo } from 'react';
 
 import CopyButton from '@/CopyButton';
+import SyntaxHighlighter from '@/Highlighter/SyntaxHighlighter';
 import Spotlight from '@/Spotlight';
 import { DivProps } from '@/types';
 
@@ -17,6 +18,11 @@ export interface SnippetProps extends DivProps {
    * @default true
    */
   copyable?: boolean;
+  /**
+   * @description The language of the content inside the Snippet component
+   * @default 'tsx'
+   */
+  language?: string;
   /**
    * @description Whether add spotlight background
    * @default false
@@ -34,13 +40,24 @@ export interface SnippetProps extends DivProps {
 }
 
 const Snippet = memo<SnippetProps>(
-  ({ symbol, children, copyable = true, type = 'ghost', spotlight, className, ...rest }) => {
+  ({
+    symbol,
+    language = 'tsx',
+    children,
+    copyable = true,
+    type = 'ghost',
+    spotlight,
+    className,
+    ...rest
+  }) => {
     const { styles, cx } = useStyles(type);
 
     return (
       <Flex align={'center'} className={cx(styles.container, className)} gap={8} {...rest}>
         {spotlight && <Spotlight />}
-        <Flex>{[symbol, children].filter(Boolean).join(' ')}</Flex>
+        <SyntaxHighlighter language={language}>
+          {[symbol, children].filter(Boolean).join(' ')}
+        </SyntaxHighlighter>
         {copyable && <CopyButton content={children} size={{ blockSize: 24, fontSize: 14 }} />}
       </Flex>
     );
