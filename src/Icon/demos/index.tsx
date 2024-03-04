@@ -1,5 +1,4 @@
-import { Icon, IconProps } from '@datoou/components';
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import { Icon, StoryBook, useControls, useCreateStore, type IconProps } from '@datoou/components';
 import { Settings } from 'lucide-react';
 
 export default () => {

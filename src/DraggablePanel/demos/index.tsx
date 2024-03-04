@@ -1,9 +1,9 @@
 import {
   DraggablePanel,
-  DraggablePanelProps,
   StoryBook,
   useControls,
   useCreateStore,
+  type DraggablePanelProps,
 } from '@datoou/components';
 import { Flex } from 'antd';
 

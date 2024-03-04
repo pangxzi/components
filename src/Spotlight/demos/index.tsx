@@ -1,5 +1,10 @@
-import { Spotlight, SpotlightProps } from '@datoou/components';
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import {
+  Spotlight,
+  StoryBook,
+  useControls,
+  useCreateStore,
+  type SpotlightProps,
+} from '@datoou/components';
 import { createStyles } from 'antd-style';
 
 const useStyles = createStyles(({ css, token }) => ({

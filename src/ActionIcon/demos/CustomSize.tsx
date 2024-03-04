@@ -1,5 +1,10 @@
-import { ActionIcon, ActionIconProps } from '@datoou/components';
-import { StoryBook, useControls, useCreateStore } from '@lobehub/ui';
+import {
+  ActionIcon,
+  StoryBook,
+  useControls,
+  useCreateStore,
+  type ActionIconProps,
+} from '@datoou/components';
 import { Settings } from 'lucide-react';
 
 export default () => {

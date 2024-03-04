@@ -62,7 +62,6 @@
     "@ant-design/icons": "^5.3.0",
     "@emotion/jest": "^11.11.0",
     "@lobehub/emojilib": "^1.0.0",
-    "@lobehub/ui": "^1.129.2",
     "ahooks": "^3.7.10",
     "antd": "^5.14.1",
     "antd-style": "^3.6.1",

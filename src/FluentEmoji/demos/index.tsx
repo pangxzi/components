@@ -1,11 +1,12 @@
-import { FluentEmoji, type FluentEmojiProps } from '@datoou/components';
 import {
+  FluentEmoji,
   StoryBook,
   getEmoji,
   getEmojiNameByCharacter,
   useControls,
   useCreateStore,
-} from '@lobehub/ui';
+  type FluentEmojiProps,
+} from '@datoou/components';
 import { Button, Flex } from 'antd';
 
 export default () => {

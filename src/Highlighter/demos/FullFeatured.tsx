@@ -1,9 +1,9 @@
 import {
   Highlighter,
-  HighlighterProps,
   StoryBook,
   useControls,
   useCreateStore,
+  type HighlighterProps,
 } from '@datoou/components';
 
 const code = `export default ({ children, className }: MarkdownProps) => {

@@ -1,4 +1,4 @@
-import { Features, FeaturesProps } from '@datoou/components';
+import { Features, type FeaturesProps } from '@datoou/components';
 import { MoonStar, Palette, Zap } from 'lucide-react';
 
 const items: FeaturesProps['items'] = [

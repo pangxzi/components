@@ -1,4 +1,4 @@
-import { Features, FeaturesProps, Snippet } from '@lobehub/ui';
+import { Features, FeaturesProps, Snippet } from '@datoou/components';
 import { Flex } from 'antd';
 import { Palette, Smartphone, Zap } from 'lucide-react';
 
