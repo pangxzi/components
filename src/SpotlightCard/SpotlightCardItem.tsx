@@ -21,7 +21,9 @@ const SpotlightCardItem = memo<SpotlightCardItemProps>(
         style={{ borderRadius, ...style }}
         {...rest}
       >
-        <Flex className={styles.content}>{children}</Flex>
+        <Flex vertical className={styles.content}>
+          {children}
+        </Flex>
       </Flex>
     );
   },
