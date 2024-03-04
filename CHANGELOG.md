@@ -1,5 +1,30 @@
 # Changelog
 
+### [Version&nbsp;1.11.2](https://github.com/datoou/components/compare/v1.11.1...v1.11.2)
+
+<sup>Released on **2024-03-04**</sup>
+
+#### 👷 构建系统
+
+- 移除 @lobehub/ui.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### Build system
+
+- 移除 @lobehub/ui ([1e5d541](https://github.com/datoou/components/commit/1e5d541))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;1.11.1](https://github.com/datoou/components/compare/v1.11.0...v1.11.1)
 
 <sup>Released on **2024-03-04**</sup>
