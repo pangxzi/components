@@ -5,6 +5,7 @@ export { default as DraggablePanel, type DraggablePanelProps } from './Draggable
 export { default as Features, type FeaturesProps } from './Features';
 export { default as FluentEmoji, type FluentEmojiProps } from './FluentEmoji';
 export { default as Icon, type IconProps, type IconSize } from './Icon';
+export { default as Snippet, type SnippetProps } from './Snippet';
 export { default as Spotlight, type SpotlightProps } from './Spotlight';
 export { default as SpotlightCard, type SpotlightCardProps } from './SpotlightCard';
 export {
