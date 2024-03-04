@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;1.12.0](https://github.com/datoou/components/compare/v1.11.2...v1.12.0)
+
+<sup>Released on **2024-03-04**</sup>
+
+#### ✨ 新特性
+
+- Snippet 组件使用代码高亮.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- Snippet 组件使用代码高亮 ([85efbfe](https://github.com/datoou/components/commit/85efbfe))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;1.11.2](https://github.com/datoou/components/compare/v1.11.1...v1.11.2)
 
 <sup>Released on **2024-03-04**</sup>
