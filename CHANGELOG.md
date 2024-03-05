@@ -1,5 +1,30 @@
 # Changelog
 
+## [Version&nbsp;1.13.0](https://github.com/datoou/components/compare/v1.12.0...v1.13.0)
+
+<sup>Released on **2024-03-05**</sup>
+
+#### ✨ 新特性
+
+- 新增 FloatPanel 组件.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's improved
+
+- 新增 FloatPanel 组件 ([3f6acdb](https://github.com/datoou/components/commit/3f6acdb))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;1.12.0](https://github.com/datoou/components/compare/v1.11.2...v1.12.0)
 
 <sup>Released on **2024-03-04**</sup>
