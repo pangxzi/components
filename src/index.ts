@@ -3,6 +3,7 @@ export * from './ConfigProvider';
 export { default as CopyButton, type CopyButtonProps } from './CopyButton';
 export { default as DraggablePanel, type DraggablePanelProps } from './DraggablePanel';
 export { default as Features, type FeaturesProps } from './Features';
+export { default as FloatPanel, type FloatPanelProps } from './FloatPanel';
 export { default as FluentEmoji, type FluentEmojiProps } from './FluentEmoji';
 export {
   default as Highlighter,
