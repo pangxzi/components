@@ -1,5 +1,30 @@
 # Changelog
 
+### [Version&nbsp;1.14.1](https://github.com/datoou/components/compare/v1.14.0...v1.14.1)
+
+<sup>Released on **2024-03-08**</sup>
+
+#### 👷 构建系统
+
+- 移除 nanoid.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### Build system
+
+- 移除 nanoid ([5ee76db](https://github.com/datoou/components/commit/5ee76db))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ## [Version&nbsp;1.14.0](https://github.com/datoou/components/compare/v1.13.0...v1.14.0)
 
 <sup>Released on **2024-03-08**</sup>
