@@ -82,232 +82,235 @@ export interface PinInputProps extends InputProps {
   containerStyle?: React.CSSProperties;
 }
 
-const PinInput = forwardRef<InputRef, PinInputProps>((props, ref) => {
-  const {
-    name,
-    form,
-    value,
-    defaultValue,
-    variant,
-    gap = 'middle',
-    size = 'middle',
-    length = 4,
-    onChange,
-    onComplete,
-    manageFocus = true,
-    autoFocus,
-    status,
-    disabled,
-    oneTimeCode = true,
-    placeholder,
-    pinType = 'alphanumeric',
-    mask,
-    readOnly,
-    inputType,
-    inputMode,
-    inputStyle,
-    containerStyle,
-    id,
-    ...others
-  } = props;
+const PinInput = forwardRef<InputRef, PinInputProps>(
+  (
+    {
+      name,
+      form,
+      value,
+      defaultValue,
+      variant,
+      gap = 'middle',
+      size = 'middle',
+      length = 4,
+      onChange,
+      onComplete,
+      manageFocus = true,
+      autoFocus,
+      status,
+      disabled,
+      oneTimeCode = true,
+      placeholder,
+      pinType = 'alphanumeric',
+      mask,
+      readOnly,
+      inputType,
+      inputMode,
+      inputStyle,
+      containerStyle,
+      id,
+      ...rest
+    },
+    ref,
+  ) => {
+    const _id = id;
 
-  const _id = id;
+    const { cx, styles } = useStyles();
 
-  const { cx, styles } = useStyles();
+    const [focusedIndex, setFocusedIndex] = useState(-1);
 
-  const [focusedIndex, setFocusedIndex] = useState(-1);
+    const [_value, setValues] = useUncontrolled<string[]>({
+      value: value ? createPinArray(length ?? 0, value) : undefined,
+      defaultValue: defaultValue?.split('').slice(0, length ?? 0),
+      finalValue: createPinArray(length ?? 0, ''),
+      onChange:
+        typeof onChange === 'function'
+          ? (val) => {
+              onChange(val.join('').trim() as any);
+            }
+          : undefined,
+    });
 
-  const [_value, setValues] = useUncontrolled<string[]>({
-    value: value ? createPinArray(length ?? 0, value) : undefined,
-    defaultValue: defaultValue?.split('').slice(0, length ?? 0),
-    finalValue: createPinArray(length ?? 0, ''),
-    onChange:
-      typeof onChange === 'function'
-        ? (val) => {
-            onChange(val.join('').trim() as any);
-          }
-        : undefined,
-  });
+    const _valueToString = _value.join('').trim();
 
-  const _valueToString = _value.join('').trim();
+    const inputsRef = useRef<Array<InputRef>>([]);
 
-  const inputsRef = useRef<Array<InputRef>>([]);
+    const validate = (code: string) => {
+      const re =
+        pinType instanceof RegExp ? pinType : pinType && pinType in regex ? regex[pinType] : null;
+      return re?.test(code);
+    };
 
-  const validate = (code: string) => {
-    const re =
-      pinType instanceof RegExp ? pinType : pinType && pinType in regex ? regex[pinType] : null;
-    return re?.test(code);
-  };
+    const focusInputField = (dir: 'next' | 'prev', index: number) => {
+      if (!manageFocus) return;
 
-  const focusInputField = (dir: 'next' | 'prev', index: number) => {
-    if (!manageFocus) return;
-
-    if (dir === 'next') {
-      const nextIndex = index + 1;
-      inputsRef.current[nextIndex < (length ?? 0) ? nextIndex : index].focus({ cursor: 'all' });
-    }
-
-    if (dir === 'prev') {
-      const nextIndex = index - 1;
-
-      inputsRef.current[nextIndex > -1 ? nextIndex : index].focus({ cursor: 'all' });
-    }
-  };
-
-  const setFieldValue = (val: string, index: number) => {
-    const values = [..._value];
-    values[index] = val;
-    setValues(values);
-  };
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
-    const inputValue = event.target.value;
-    const nextCharOrValue =
-      inputValue.length === 2 ? inputValue.split('')[inputValue.length - 1] : inputValue;
-
-    const isValid = validate(nextCharOrValue);
-    if (nextCharOrValue.length < 2) {
-      if (isValid) {
-        setFieldValue(nextCharOrValue, index);
-        focusInputField('next', index);
-      } else {
-        setFieldValue('', index);
+      if (dir === 'next') {
+        const nextIndex = index + 1;
+        inputsRef.current[nextIndex < (length ?? 0) ? nextIndex : index].focus({ cursor: 'all' });
       }
-    } else if (isValid) {
-      setValues(createPinArray(length ?? 0, inputValue));
-    }
-  };
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, index: number) => {
-    const { ctrlKey, key, shiftKey, target } = event;
-    const inputValue = (target as HTMLInputElement).value;
-    if (inputMode === 'numeric') {
-      const canTypeSign =
-        key === 'Backspace' ||
-        key === 'Tab' ||
-        key === 'Control' ||
-        key === 'Delete' ||
-        (ctrlKey && key === 'v')
-          ? true
-          : !Number.isNaN(Number(key));
+      if (dir === 'prev') {
+        const nextIndex = index - 1;
 
-      if (!canTypeSign) {
+        inputsRef.current[nextIndex > -1 ? nextIndex : index].focus({ cursor: 'all' });
+      }
+    };
+
+    const setFieldValue = (val: string, index: number) => {
+      const values = [..._value];
+      values[index] = val;
+      setValues(values);
+    };
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
+      const inputValue = event.target.value;
+      const nextCharOrValue =
+        inputValue.length === 2 ? inputValue.split('')[inputValue.length - 1] : inputValue;
+
+      const isValid = validate(nextCharOrValue);
+      if (nextCharOrValue.length < 2) {
+        if (isValid) {
+          setFieldValue(nextCharOrValue, index);
+          focusInputField('next', index);
+        } else {
+          setFieldValue('', index);
+        }
+      } else if (isValid) {
+        setValues(createPinArray(length ?? 0, inputValue));
+      }
+    };
+
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, index: number) => {
+      const { ctrlKey, key, shiftKey, target } = event;
+      const inputValue = (target as HTMLInputElement).value;
+      if (inputMode === 'numeric') {
+        const canTypeSign =
+          key === 'Backspace' ||
+          key === 'Tab' ||
+          key === 'Control' ||
+          key === 'Delete' ||
+          (ctrlKey && key === 'v')
+            ? true
+            : !Number.isNaN(Number(key));
+
+        if (!canTypeSign) {
+          event.preventDefault();
+        }
+      }
+
+      if (key === 'ArrowLeft' || (shiftKey && key === 'Tab')) {
         event.preventDefault();
-      }
-    }
-
-    if (key === 'ArrowLeft' || (shiftKey && key === 'Tab')) {
-      event.preventDefault();
-      focusInputField('prev', index);
-    } else if (key === 'ArrowRight' || key === 'Tab' || key === ' ') {
-      event.preventDefault();
-      focusInputField('next', index);
-    } else if (key === 'Delete') {
-      event.preventDefault();
-      setFieldValue('', index);
-    } else if (key === 'Backspace') {
-      event.preventDefault();
-      setFieldValue('', index);
-      if (length === index + 1) {
-        if ((event.target as HTMLInputElement).value === '') {
+        focusInputField('prev', index);
+      } else if (key === 'ArrowRight' || key === 'Tab' || key === ' ') {
+        event.preventDefault();
+        focusInputField('next', index);
+      } else if (key === 'Delete') {
+        event.preventDefault();
+        setFieldValue('', index);
+      } else if (key === 'Backspace') {
+        event.preventDefault();
+        setFieldValue('', index);
+        if (length === index + 1) {
+          if ((event.target as HTMLInputElement).value === '') {
+            focusInputField('prev', index);
+          }
+        } else {
           focusInputField('prev', index);
         }
-      } else {
-        focusInputField('prev', index);
+      } else if (inputValue.length > 0 && key === _value[index]) {
+        event.preventDefault();
+        focusInputField('next', index);
       }
-    } else if (inputValue.length > 0 && key === _value[index]) {
+    };
+
+    const handleFocus = (event: React.FocusEvent<HTMLInputElement>, index: number) => {
+      event.target.select();
+      setFocusedIndex(index);
+    };
+
+    const handleBlur = () => {
+      setFocusedIndex(-1);
+    };
+
+    const handlePaste = (event: React.ClipboardEvent<HTMLInputElement>) => {
       event.preventDefault();
-      focusInputField('next', index);
-    }
-  };
+      const copyValue = event.clipboardData.getData('text/plain').replace(/[\n\r\s]+/g, '');
+      const isValid = validate(copyValue.trim());
 
-  const handleFocus = (event: React.FocusEvent<HTMLInputElement>, index: number) => {
-    event.target.select();
-    setFocusedIndex(index);
-  };
+      if (isValid) {
+        const copyValueToPinArray = createPinArray(length ?? 0, copyValue);
+        setValues(copyValueToPinArray);
+        focusInputField('next', copyValueToPinArray.length - 1);
+      }
+    };
 
-  const handleBlur = () => {
-    setFocusedIndex(-1);
-  };
+    useEffect(() => {
+      if (_valueToString.length !== length) return;
+      onComplete?.(_valueToString);
+    }, [length, _valueToString]);
 
-  const handlePaste = (event: React.ClipboardEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    const copyValue = event.clipboardData.getData('text/plain').replace(/[\n\r\s]+/g, '');
-    const isValid = validate(copyValue.trim());
+    useEffect(() => {
+      if (length !== _value.length) {
+        setValues(createPinArray(length ?? 0, _value.join('')));
+      }
+    }, [length, _value]);
 
-    if (isValid) {
-      const copyValueToPinArray = createPinArray(length ?? 0, copyValue);
-      setValues(copyValueToPinArray);
-      focusInputField('next', copyValueToPinArray.length - 1);
-    }
-  };
+    useEffect(() => {
+      if (value === '') {
+        setValues(createPinArray(length ?? 0, value));
+      }
+    }, [value]);
 
-  useEffect(() => {
-    if (_valueToString.length !== length) return;
-    onComplete?.(_valueToString);
-  }, [length, _valueToString]);
+    return (
+      <>
+        <Flex id={_id} gap={gap} wrap="nowrap" style={containerStyle}>
+          {_value.map((char: string, index: number) => (
+            <Input
+              variant={variant}
+              className={cx(
+                {
+                  [styles.input]: size === 'middle',
+                  [styles['input-large']]: size === 'large',
+                  [styles['input-small']]: size === 'small',
+                },
+                {
+                  [styles['input-error']]: status === 'error',
+                  [styles['input-warning']]: status === 'warning',
+                },
+              )}
+              style={inputStyle}
+              size={size}
+              id={`${_id}-${index + 1}`}
+              key={`${_id}-${index}`}
+              inputMode={inputMode || (pinType === 'number' ? 'numeric' : 'text')}
+              onChange={(event) => handleChange(event, index)}
+              onKeyDown={(event) => handleKeyDown(event, index)}
+              onFocus={(event) => handleFocus(event, index)}
+              onBlur={handleBlur}
+              onPaste={handlePaste}
+              type={inputType || (mask ? 'password' : pinType === 'number' ? 'tel' : 'text')}
+              status={status}
+              disabled={disabled}
+              ref={(node) => {
+                if (index === 0) {
+                  assignRef(ref, node);
+                }
+                inputsRef.current[index] = node!;
+              }}
+              autoComplete={oneTimeCode ? 'one-time-code' : 'off'}
+              placeholder={focusedIndex === index ? '' : placeholder}
+              value={char}
+              autoFocus={autoFocus && index === 0}
+              readOnly={readOnly}
+              {...rest}
+            />
+          ))}
+        </Flex>
 
-  useEffect(() => {
-    if (length !== _value.length) {
-      setValues(createPinArray(length ?? 0, _value.join('')));
-    }
-  }, [length, _value]);
-
-  useEffect(() => {
-    if (value === '') {
-      setValues(createPinArray(length ?? 0, value));
-    }
-  }, [value]);
-
-  return (
-    <>
-      <Flex id={_id} gap={gap} wrap="nowrap" style={containerStyle}>
-        {_value.map((char: string, index: number) => (
-          <Input
-            variant={variant}
-            className={cx(
-              {
-                [styles.input]: size === 'middle',
-                [styles['input-large']]: size === 'large',
-                [styles['input-small']]: size === 'small',
-              },
-              {
-                [styles['input-error']]: status === 'error',
-                [styles['input-warning']]: status === 'warning',
-              },
-            )}
-            style={inputStyle}
-            size={size}
-            id={`${_id}-${index + 1}`}
-            key={`${_id}-${index}`}
-            inputMode={inputMode || (pinType === 'number' ? 'numeric' : 'text')}
-            onChange={(event) => handleChange(event, index)}
-            onKeyDown={(event) => handleKeyDown(event, index)}
-            onFocus={(event) => handleFocus(event, index)}
-            onBlur={handleBlur}
-            onPaste={handlePaste}
-            type={inputType || (mask ? 'password' : pinType === 'number' ? 'tel' : 'text')}
-            status={status}
-            disabled={disabled}
-            ref={(node) => {
-              if (index === 0) {
-                assignRef(ref, node);
-              }
-              inputsRef.current[index] = node!;
-            }}
-            autoComplete={oneTimeCode ? 'one-time-code' : 'off'}
-            placeholder={focusedIndex === index ? '' : placeholder}
-            value={char}
-            autoFocus={autoFocus && index === 0}
-            readOnly={readOnly}
-            {...others}
-          />
-        ))}
-      </Flex>
-
-      <input type="hidden" name={name} form={form} value={_valueToString} />
-    </>
-  );
-});
+        <input type="hidden" name={name} form={form} value={_valueToString} />
+      </>
+    );
+  },
+);
 
 export default PinInput;
