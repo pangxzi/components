@@ -3,7 +3,7 @@ import { assignRef } from '@/utils/assignRef';
 import { createPinArray } from '@/utils/createPinArray';
 import type { FlexProps, InputProps, InputRef } from 'antd';
 import { Flex, Input } from 'antd';
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import { HTMLInputTypeAttribute, forwardRef, useEffect, useRef, useState } from 'react';
 import { useStyles } from './style';
 
 const regex = {
@@ -67,7 +67,7 @@ export interface PinInputProps extends InputProps {
   readOnly?: boolean;
 
   /** 输入的 `type` 属性，如果未指定，则从 `type` prop 推断 */
-  inputType?: React.HTMLInputTypeAttribute;
+  inputType?: HTMLInputTypeAttribute;
 
   /** `inputmode` 属性，如果未指定，则从 `type` prop 推断 */
   inputMode?:
