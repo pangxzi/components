@@ -1,5 +1,30 @@
 # Changelog
 
+### [Version&nbsp;1.14.3](https://github.com/datoou/components/compare/v1.14.2...v1.14.3)
+
+<sup>Released on **2024-03-08**</sup>
+
+#### 🐛 修复
+
+- React 依赖问题.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- React 依赖问题 ([ede4040](https://github.com/datoou/components/commit/ede4040))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;1.14.2](https://github.com/datoou/components/compare/v1.14.1...v1.14.2)
 
 <sup>Released on **2024-03-08**</sup>
