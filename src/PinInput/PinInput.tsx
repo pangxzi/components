@@ -3,18 +3,12 @@ import { assignRef } from '@/utils/assignRef';
 import { createPinArray } from '@/utils/createPinArray';
 import type { FlexProps, InputProps, InputRef } from 'antd';
 import { Flex, Input } from 'antd';
-import { HTMLInputTypeAttribute, forwardRef, useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState, type HTMLInputTypeAttribute } from 'react';
 import { useStyles } from './style';
 
 const regex = {
   number: /^[0-9]+$/,
   alphanumeric: /^[a-zA-Z0-9]+$/i,
-};
-
-export type PinInputStylesNames = 'root' | 'pinInput' | 'input';
-
-export type PinInputCssVariables = {
-  root: '--pin-input-size';
 };
 
 export interface PinInputProps extends InputProps {
