@@ -1,5 +1,30 @@
 # Changelog
 
+### [Version&nbsp;1.14.4](https://github.com/datoou/components/compare/v1.14.3...v1.14.4)
+
+<sup>Released on **2024-03-08**</sup>
+
+#### 🐛 修复
+
+- PinInput 组件 APIs 显示不完整.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- PinInput 组件 APIs 显示不完整 ([9de5367](https://github.com/datoou/components/commit/9de5367))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;1.14.3](https://github.com/datoou/components/compare/v1.14.2...v1.14.3)
 
 <sup>Released on **2024-03-08**</sup>
