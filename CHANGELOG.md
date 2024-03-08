@@ -1,5 +1,30 @@
 # Changelog
 
+### [Version&nbsp;1.14.2](https://github.com/datoou/components/compare/v1.14.1...v1.14.2)
+
+<sup>Released on **2024-03-08**</sup>
+
+#### 🐛 修复
+
+- ERROR Source depends on `react`, but there is no declaration of it.
+
+<br/>
+
+<details>
+<summary><kbd>Improvements and Fixes</kbd></summary>
+
+#### What's fixed
+
+- ERROR Source depends on `react`, but there is no declaration of it ([a84cf7f](https://github.com/datoou/components/commit/a84cf7f))
+
+</details>
+
+<div align="right">
+
+[![](https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square)](#readme-top)
+
+</div>
+
 ### [Version&nbsp;1.14.1](https://github.com/datoou/components/compare/v1.14.0...v1.14.1)
 
 <sup>Released on **2024-03-08**</sup>
