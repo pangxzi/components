@@ -15,7 +15,8 @@ export default () => {
       >
         <Flex vertical align="center" gap={8}>
           <FluentEmoji size={128} emoji="😾" type={'anim'} />
-          <h1>Move Me!</h1>
+          {/* eslint-disable-next-line */}
+          <h1>Don't Move!</h1>
         </Flex>
       </FloatPanel>
     </div>

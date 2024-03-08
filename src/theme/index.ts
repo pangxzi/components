@@ -16,7 +16,7 @@ declare module 'antd-style' {
 
 const { createStyles, ThemeProvider } = createInstance<ProEditorToken>({
   customToken: {
-    editorPrefix: 'editor',
+    editorPrefix: 'datoou',
   },
 });
 
