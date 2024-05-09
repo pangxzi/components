@@ -28,7 +28,7 @@ pnpm i @datoou/components -S
 
 > 📊 Total: <kbd>**2**</kbd>
 
-<a href="https://github.com/datoou" title="datoou">
+<a href="https://github.com/pangxzi" title="pangxzi">
   <img src="https://avatars.githubusercontent.com/u/52907799?v=4" width="50" />
 </a>
 <a href="https://github.com/actions-user" title="actions-user">
